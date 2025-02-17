@@ -26,5 +26,6 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(EC2Cmd)
+	rootCmd.AddCommand(CostCmd)
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
