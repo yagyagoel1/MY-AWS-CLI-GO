@@ -11,12 +11,13 @@ import (
 )
 
 func ListEC2Instances() {
-	cfg, err := config.LoadDefaultConfig(context.Background())
+	ctx := context.Background()
+	cfg, err := config.LoadDefaultConfig(ctx)
 	if err != nil {
 		log.Fatalf("unable to load sdk config , %v", err)
 	}
 	client := ec2.NewFromConfig(cfg)
-	resp, err := client.DescribeInstances(context.TODO(), &ec2.DescribeInstancesInput{})
+	resp, err := client.DescribeInstances(ctx, &ec2.DescribeInstancesInput{})
 	if err != nil {
 		log.Fatalf("falied to descirbe the instances %v", err)
 	}

@@ -13,7 +13,8 @@ import (
 )
 
 func getAllCostings() {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	ctx := context.Background()
+	cfg, err := config.LoadDefaultConfig(ctx)
 	if err != nil {
 		log.Fatalf("unable to load Sdk config %v", err)
 	}
@@ -29,7 +30,7 @@ func getAllCostings() {
 		Granularity: "DAILY",
 		Metrics:     []string{"BlendedCost"},
 	}
-	resp, err := client.GetCostAndUsage(context.TODO(), input)
+	resp, err := client.GetCostAndUsage(ctx, input)
 	if err != nil {
 		log.Fatalf("failed to fetch cost report, %v", err)
 	}
